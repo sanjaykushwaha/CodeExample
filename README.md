@@ -7,6 +7,9 @@
 
 
 2. Use custom application class and override Configuration.Provider class
+         
+         
+         
          class MyApplication extends Application implements Configuration.Provider {
                 onCreate(){
                     // provide custom configuration
@@ -26,10 +29,11 @@
                             .setMinimumLoggingLevel(android.util.Log.INFO)
                             .build();
                 }
-}
+           }
 
-3. Access custom initilized work manager
-Use WorkManager.getInstance(Context) when accessing WorkManger (NOT WorkManager.getInstance())
+3. Access custom initilized work manager    
+            
+            WorkManager.getInstance(Context) when accessing WorkManger (NOT WorkManager.getInstance())
 
 
 #### Threading in Worker: Bydefault Worker run on different thread that is backed by Executer defined in default inilized worker. For use own executer you have to first remove default initilizer and then use manually initilizer.
@@ -49,7 +53,7 @@ Use WorkManager.getInstance(Context) when accessing WorkManger (NOT WorkManager.
    
    Finally, you can use the WorkContinuation.enqueue() method to enqueue() your chain of WorkContinuations.
   
-  WorkManager.getInstance(myContext)
+     WorkManager.getInstance(myContext)
     // Candidates to run in parallel
     .beginWith(Arrays.asList(filter1, filter2, filter3))
     // Dependent work (only runs after all previous work in chain)
