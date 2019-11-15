@@ -1,4 +1,4 @@
-# Custom Configuration and intialization of Work Manager 
+###### Custom Configuration and intialization of Work Manager 
 1. For remove default initilizer update Android-manifest using the merge rule tools:node="remove"
    
    <provider android:name="androidx.work.impl.WorkManagerInitializer"
