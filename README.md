@@ -41,4 +41,24 @@ Use WorkManager.getInstance(Context) when accessing WorkManger (NOT WorkManager.
                 .build());
 
 
-     
+    
+    
+ #### Chaining on WorkManager
+ 
+ To create a chain of work, you can use WorkManager.beginWith(OneTimeWorkRequest) or WorkManager.beginWith(List<OneTimeWorkRequest>) , which return an instance of WorkContinuation. A WorkContinuation can then be used to add dependent OneTimeWorkRequests using WorkContinuation.then(OneTimeWorkRequest) or WorkContinuation.then(List<OneTimeWorkRequest>) .
+   
+   Finally, you can use the WorkContinuation.enqueue() method to enqueue() your chain of WorkContinuations.
+  
+  WorkManager.getInstance(myContext)
+    // Candidates to run in parallel
+    .beginWith(Arrays.asList(filter1, filter2, filter3))
+    // Dependent work (only runs after all previous work in chain)
+    .then(compress)
+    .then(upload)
+    // Don't forget to enqueue()
+    .enqueue();
+
+   
+   
+   
+    
